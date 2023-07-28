@@ -30,7 +30,7 @@
                 <div class="card-body">
                     <h5 class="card-title">{{$post->title}}</h5>
                     <p class="card-text">{{$post->content}}</p>
-                    <a href="#" class="btn btn-primary">Detay</a>
+                    <a href="{{ route('front.blogDetail',$post->title) }}" class="btn btn-primary">Detay</a>
                 </div>
             </div>
 

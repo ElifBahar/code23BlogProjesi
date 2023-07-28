@@ -28,3 +28,5 @@ Route::get('/app',function (){
 ///// POST ROUTES
 
 Route::get('/blog',[BlogController::class, 'index'])->name('front.blog');
+Route::get('/detail/{id}', [BlogController::class,'detail'])->name('front.blogDetail');
+
