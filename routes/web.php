@@ -19,8 +19,11 @@ Route::get('/', function () {
 })->name('front.home');
 
 Route::get('/app',function (){
-   return view('front.layout.app');
+   return view('panel.layout.app');
 });
+
+
+
 
 
 // FRONT ROUTES
