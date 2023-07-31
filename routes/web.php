@@ -30,3 +30,6 @@ Route::get('/app',function (){
 Route::get('/blog',[BlogController::class, 'index'])->name('front.blog');
 Route::get('/detail/{id}', [BlogController::class,'detail'])->name('front.blogDetail');
 
+///PANEL ROUTES
+Route::get('/panell',[BlogController::class,'panel'])->name('panel');
+

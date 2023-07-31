@@ -25,4 +25,7 @@ class BlogController extends Controller
 
         return view('front.blog.post.detail',compact('postDetail'));
     }
+    public function panel(){
+        return view('panel.pages.index');
+    }
 }
