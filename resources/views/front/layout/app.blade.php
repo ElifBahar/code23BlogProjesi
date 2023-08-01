@@ -48,7 +48,7 @@
                     </div>
                 </div>
                 <a href="contact.html" class="nav-item nav-link">Contact</a>
-                <a href="{{route('front.blog')}}" class="nav-item nav-link"></a>
+                <a href="{{route('front.blog')}}" class="nav-item nav-link">BLOG</a>
             </div>
             <div class="input-group ml-auto d-none d-lg-flex" style="width: 100%; max-width: 300px;">
                 <input type="text" class="form-control border-0" placeholder="Keyword">
