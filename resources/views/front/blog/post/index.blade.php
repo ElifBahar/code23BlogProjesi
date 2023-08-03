@@ -21,16 +21,16 @@
 
 
 
-    <div class="d-flex" style="gap: 30px">
+    <div class="d-flex justify-content-center" style="gap: 30px">
         @foreach($posts as $post)
 
 
-            <div class="card" style="width: 18rem;">
+            <div class="card" style="width: 25rem;">
                 <img src="{{asset('front/images/ddyoLogo.png')}}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">{{$post->title}}</h5>
                     <p class="card-text">{{$post->content}}</p>
-                    <a href="{{ route('front.blogDetail',$post->title) }}" class="btn btn-primary">Detay</a>
+                    <a href="{{ route('front.blogDetail',$post->title) }}" class="btn btn-success">Detay</a>
                 </div>
             </div>
 
