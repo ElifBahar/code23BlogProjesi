@@ -21,10 +21,8 @@
 
 
 
-    <div class="d-flex" style="gap: 30px">
+    <div class="col d-flex" style="gap: 30px">
         @foreach($posts as $post)
-
-
             <div class="card" style="width: 18rem;">
                 <img src="{{asset('front/images/ddyoLogo.png')}}" class="card-img-top" alt="...">
                 <div class="card-body">
