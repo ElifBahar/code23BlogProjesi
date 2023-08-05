@@ -30,7 +30,11 @@ class authController extends Controller
 
     public function userLogoutAction(){
         Auth::logout();
-        return redirect()->route("user.login");
+        return Redirect::route("user.login");
+    }
+
+    public function userRegister(){
+        return view('auth.userRegister');
     }
 
     public function userRegisterAction(Request $request){
@@ -48,5 +52,27 @@ class authController extends Controller
             return Redirect::route('front.home');
         }
         return Redirect::route('user.register.action')->withErrors('Geçersiz');
+    }
+
+    public function adminLogin(){
+        return view('auth.adminLogin');
+    }
+
+    public function adminLoginAction(Request $request){
+        $validated = $request->validate([
+            'username'=>'required',
+            'password'=>'required',
+        ]);
+
+        if(Auth::guard('admin')->attempt(['username'=>$request->username,'password'=>$request->password])){
+            return Redirect::route('admin');
+        }
+
+        return Redirect::route('admin.login.action')->withErrors('Hatali giris');
+    }
+
+    public function adminLogoutAction(){
+        Auth::guard('admin')->logout();
+        return view('auth.adminLogin');
     }
 }
