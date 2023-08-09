@@ -29,7 +29,7 @@
                 Blog:
                 <textarea name="content" id="content" class="form-control w-25 h-25"></textarea>
             </div>
-            <input type="submit" name="gonder">
+            <input class="btn btn-primary" type="submit" name="gonder">
         </form>
     </div>
 

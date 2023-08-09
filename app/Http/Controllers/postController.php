@@ -19,7 +19,7 @@ class postController extends Controller
         $var->content = $request->content;
         $var->save();
 
-        return Redirect::route('admin');
+        return Redirect::back();
     }
 
     public function admin(){
@@ -49,6 +49,6 @@ class postController extends Controller
     public function postDeleteAction($id){
         BlogPost::whereId($id)->delete();
 
-        return Redirect::route('admin');
+        return Redirect::back();
     }
 }

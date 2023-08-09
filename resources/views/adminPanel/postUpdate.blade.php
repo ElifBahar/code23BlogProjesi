@@ -29,7 +29,7 @@
                 Blog:
                 <textarea name="content" id="content" class="form-control w-25 h-25">{{$post->content}}</textarea>
             </div>
-            <input type="submit" name="Düzenle">
+            <input class="btn btn-primary" type="submit" name="Düzenle">
         </form>
     </div>
 @endsection
