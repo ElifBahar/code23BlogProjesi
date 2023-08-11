@@ -29,6 +29,9 @@
                 Blog:
                 <textarea name="content" id="content" class="form-control w-25 h-25">{{$post->content}}</textarea>
             </div>
+            <div class="form-group">
+                Resim : <input type="file" name="img" id="img" class="form-control w-25">
+            </div>
             <input class="btn btn-primary" type="submit" name="Düzenle">
         </form>
     </div>

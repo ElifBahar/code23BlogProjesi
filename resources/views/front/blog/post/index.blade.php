@@ -24,7 +24,7 @@
     <div class="col d-flex" style="gap: 30px">
         @foreach($posts as $post)
             <div class="card" style="width: 18rem;">
-                <img src="{{asset('front/images/ddyoLogo.png')}}" class="card-img-top" alt="...">
+                <img src="{{asset('front/images/'.$post->image)}}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">{{$post->title}}</h5>
                     <p class="card-text">{{$post->content}}</p>

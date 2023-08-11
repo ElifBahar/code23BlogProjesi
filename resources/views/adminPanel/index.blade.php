@@ -5,7 +5,7 @@
 
 @section('content')
     <div class="col">
-        <form action="{{route('post.store')}}" method="post">
+        <form action="{{route('post.store')}}" method="post" enctype="multipart/form-data">
             @csrf
             <h1>Post Gönder</h1>
 
@@ -29,6 +29,9 @@
                 Blog:
                 <textarea name="content" id="content" class="form-control w-25 h-25"></textarea>
             </div>
+            <div class="form-group">
+                Img : <input type="file" name="img" id="img" class="form-control w-25">
+            </div>
             <input class="btn btn-primary" type="submit" name="gonder">
         </form>
     </div>
@@ -37,7 +40,7 @@
         <ol>
             @foreach($posts as $post)
                 <li>
-                    {{$post->title}} : {{$post->content}} <a href="{{route('post.update',$post->id)}}" class="alert-primary mx-2">Düzenle</a> <a href="{{route('post.delete.action',$post->id)}}" class="alert-warning mx-2">Sil</a>
+                    {{$post->title}} : {{$post->content}} : <img src="{{asset("front/images/".$post->image)}}" alt="" width="50"><a href="{{route('post.update',$post->id)}}" class="alert-primary mx-2">Düzenle</a> <a href="{{route('post.delete.action',$post->id)}}" class="alert-warning mx-2">Sil</a>
                 </li>
             @endforeach
         </ol>

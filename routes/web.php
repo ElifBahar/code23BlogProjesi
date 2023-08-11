@@ -30,22 +30,29 @@ Route::get('/home', function () {
 Route::get('/admin/dashboard/panel',[postController::class,'admin'])->middleware(isAdmin::class)->name('admin');
 
 //User Login-Register routes
-Route::get('/',[authController::class,"userLogin"])->middleware(isLogout::class)->name('user.login');
-Route::post('/',[authController::class,"userLoginAction"])->middleware(isLogout::class)->name('user.login.action');
-Route::get('/logout',[authController::class,"userLogoutAction"])->middleware(isLogout::class)->name('user.logout.action');
+Route::prefix('')->middleware(isLogout::class)->group(function (){
+    Route::get('/',[authController::class,"userLogin"])->name('user.login');
+    Route::post('/',[authController::class,"userLoginAction"])->name('user.login.action');
+    Route::get('/logout',[authController::class,"userLogoutAction"])->name('user.logout.action');
 
-Route::get('/register',[authController::class,'userRegister'])->middleware(isLogout::class)->name('user.register');
-Route::post('/register',[authController::class,"userRegisterAction"])->middleware(isLogout::class)->name('user.register.action');
+    Route::get('/register',[authController::class,'userRegister'])->name('user.register');
+    Route::post('/register',[authController::class,"userRegisterAction"])->name('user.register.action');
+});
 
 // BLOG ROUTES
-Route::get('/blog',[BlogController::class, 'index'])->middleware(isUser::class)->name('front.blog');
-Route::get('/detail/{id}', [BlogController::class,'detail'])->middleware(isUser::class)->name('front.blogDetail');
+Route::prefix('blog')->middleware(isUser::class)->group(function (){
+    Route::get('',[BlogController::class, 'index'])->name('front.blog');
+    Route::get('/detail/{id}', [BlogController::class,'detail'])->name('front.blogDetail');
+});
 
 
 //Admin routes
-Route::get('/admin/dashboard',[authController::class,'adminLogin'])->middleware(isAdminLogout::class)->name('admin.login');
-Route::post('/admin/dashboard',[authController::class,'adminLoginAction'])->name('admin.login.action');
-Route::get('/admin/dashboard',[authController::class,'adminLogoutAction'])->name('admin.logout.action');
+Route::prefix('admin')->middleware([isLogout::class,isAdminLogout::class])->group(function (){
+    Route::get('/dashboard',[authController::class,'adminLogin'])->name('admin.login');
+    Route::post('/dashboard',[authController::class,'adminLoginAction'])->name('admin.login.action');
+    Route::get('/dashboard',[authController::class,'adminLogoutAction'])->name('admin.logout.action');
+
+});
 
 // POST ROUTES
 //CREATE

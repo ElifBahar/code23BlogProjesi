@@ -11,11 +11,11 @@
     <br><br><br>
 
 
-    <p>{{$postDetail->content}}</p>
+    <img src="{{asset('front/images/'.$postDetail->image)}}" class="w-50" alt="...">
 
 
     <br><br><br><br>
-
+    <p>{{$postDetail->content}}</p>
 
 @endsection
 

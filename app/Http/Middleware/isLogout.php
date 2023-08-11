@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,11 +17,10 @@ class isLogout
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(!Auth::check()){
-            return $next($request);
+        if (Auth::check() && Auth::user()->is_active != 1) {
+            Auth::logout();
+            return $next($request); # add you login route
         }
-
-        Auth::logout();
         return $next($request);
     }
 }

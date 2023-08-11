@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\BlogPost;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Str;
 
 class postController extends Controller
 {
@@ -17,13 +18,21 @@ class postController extends Controller
         $var = new BlogPost();
         $var->title = $request->title;
         $var->content = $request->content;
+        if($request->hasFile('img')){
+            $path = public_path('front/images');
+            $name = Str::random(10);
+            $file = $request->file('img');
+            $name .=$name.$file->getClientOriginalName();
+            $file -> move($path,$name);
+            $var->image=$name;
+        }
         $var->save();
 
         return Redirect::back();
     }
 
     public function admin(){
-        $posts = BlogPost::get();
+        $posts = BlogPost::orderBy('id')->get();
         return view('adminPanel.index',compact('posts'));
     }
 
@@ -38,10 +47,18 @@ class postController extends Controller
             'content'=>'required',
         ]);
 
-        BlogPost::whereId($id)->update([
-            'title'=>$request->title,
-            'content'=>$request->content,
-        ]);
+        $var = BlogPost::find($id);
+        $var->title = $request->title;
+        $var->content = $request->content;
+        if($request->hasFile('img')){
+            $path = public_path('front/images');
+            $name = Str::random(10);
+            $file = $request->file('img');
+            $name .=$name.$file->getClientOriginalName();
+            $file -> move($path,$name);
+            $var->image = $name;
+        }
+        $var->save();
 
         return Redirect::route('admin');
     }

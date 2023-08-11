@@ -8,7 +8,7 @@ use App\Models\BlogPost;
 class BlogController extends Controller
 {
     public function index(){
-        $posts = BlogPost::get();
+        $posts = BlogPost::orderBy('id')->get();
         return view('front.blog.post.index',compact('posts'));
 
     }
