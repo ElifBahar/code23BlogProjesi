@@ -5,7 +5,7 @@
 
 @section('content')
     <div class="col">
-        <form action="{{route('post.update.action',$post->id)}}" method="post">
+        <form action="{{route('post.update.action',$post->id)}}" method="post" enctype="multipart/form-data">
             @csrf
             <h1>Post Güncelle</h1>
 

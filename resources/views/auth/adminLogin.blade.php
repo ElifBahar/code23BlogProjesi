@@ -3,7 +3,7 @@
     Admin Login
 @endsection
 @section('form')
-    <form action="" method="post">
+    <form action="{{route('admin.login.action')}}" method="post">
         @csrf
         <h1>Admin Login</h1>
         @if($errors->any())
